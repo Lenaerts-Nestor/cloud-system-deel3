@@ -1,12 +1,15 @@
-version: '3'
+version: '3.8'
 services:
-  php:
-    build: .
-    ports:
-      - "80:80"
-    volumes:
-      - ./html:/var/www/html
-  mysql:
-    image: mysql:latest
-    environment:
-      MYSQL_ROOT_PASSWORD: nestor
+  php-apache:
+    image: sofianehammich/my-php-apache-app:latest
+    ports: 
+      - "8080:80"
+  volumes: 
+    - /var/www/html
+db:
+  image: mysql:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: backend
+    MYSQL_USER: root
+    MYSQL_PASSWORD: nestor
